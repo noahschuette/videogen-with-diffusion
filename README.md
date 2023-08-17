@@ -1,2 +1,2 @@
-# videogen-with-diffusion
-Bachelor Thesis: Video Generation with Diffusion Models
+# Video Generation with Diffusion Models
+Repository for my Bachelor Thesis
