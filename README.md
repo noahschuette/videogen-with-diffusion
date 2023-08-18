@@ -24,7 +24,7 @@ If torch does not work properly with CUDA, try installing it differently
 ```
 pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu118
 ``` 
-Next, move all python files from `scripts/EB-Synth` to the parent folder of the cloned repository, so that `extractor_dino.py` overwrites the existing file in the cloned subfolder. 
+Next, move all python files from `scripts/sd-dino` to the parent folder of the cloned repository, so that `extractor_dino.py` overwrites the existing file in the cloned subfolder. 
 
 ###	Stable-Diffusion Web-UI
 
