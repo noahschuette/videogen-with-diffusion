@@ -198,7 +198,7 @@ def main(args):
 
 if __name__ == '__main__':
     #project_dir, original_movie_path, blend_rate=1, export_type="mp4"
-    parser = argparse.ArgumentParser(description="")
+    parser = argparse.ArgumentParser(description="Blend results together and export to video")
     parser.add_argument('project_dir', help='Path to the project directory')
     parser.add_argument('--fps', type=int, help='Frames per second for the result')
     parser.add_argument('--blend_rate', type=int, help='Blend rate')
