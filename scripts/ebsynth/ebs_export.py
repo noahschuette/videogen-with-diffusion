@@ -1,3 +1,4 @@
+#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage7.py (last visited 18.10.2023)
 import os
 import re
 import glob
@@ -6,8 +7,8 @@ import time
 import cv2
 import subprocess
 import numpy as np
+import argparse
 
-#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage7.py
 
 def clamp(n, smallest, largest):
     return sorted([smallest, n, largest])[1]
@@ -91,13 +92,22 @@ def get_ext(export_type):
     else:
         return ".avi"
 
-def ebs_export(project_dir, original_movie_path, blend_rate=1, export_type="mp4"):
+def main(args):
 
+    # Pass Arguments
+
+    project_dir = args.project_dir
     fps = 30
-    clip = cv2.VideoCapture(original_movie_path)
-    if clip:
-        fps = clip.get(cv2.CAP_PROP_FPS)
-        clip.release()
+    blend_rate = 1
+    export_type = "mp4"
+    if args.fps is not None:
+        fps = args.fps
+    if args.blend_rate is not None:
+        blend_rate = args.blend_rate
+    if args.ext is not None:
+        export_type = args.ext
+
+    # Blend results together
 
     blend_rate = clamp(blend_rate, 0.0, 1.0)
 
@@ -173,7 +183,7 @@ def ebs_export(project_dir, original_movie_path, blend_rate=1, export_type="mp4"
         filename = str(i).zfill(number_of_digits) + ".png"
         shutil.copy( os.path.join(out_dirs[cur_clip]['path'] , filename) , os.path.join(tmp_dir , filename) )
 
-    ### create movie
+    ### Create Movie
     movie_base_name = time.strftime("%Y%m%d-%H%M%S")
 
     nosnd_path = os.path.join(project_dir , movie_base_name + get_ext(export_type))
@@ -185,3 +195,13 @@ def ebs_export(project_dir, original_movie_path, blend_rate=1, export_type="mp4"
 
     print("Exported : " + nosnd_path)
     print("Stage 7: Video render done")
+
+if __name__ == '__main__':
+    #project_dir, original_movie_path, blend_rate=1, export_type="mp4"
+    parser = argparse.ArgumentParser(description="")
+    parser.add_argument('project_dir', help='Path to the project directory')
+    parser.add_argument('--fps', type=int, help='Frames per second for the result')
+    parser.add_argument('--blend_rate', type=int, help='Blend rate')
+    parser.add_argument('--ext', action='store_true', help='Format export type defaults .mp4')
+    args = parser.parse_args()
+    main(args)

@@ -1,5 +1,6 @@
+#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage5.py
+
 import os
-import cv2
 import re
 import os
 import glob
@@ -7,8 +8,9 @@ import time
 from sys import byteorder
 import binascii
 import numpy as np
+import argparse
 
-#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage5.py
+SYNTHS_PER_PROJECT = 15
 
 def to_float_bytes(f):
     if byteorder == 'little':
@@ -165,18 +167,21 @@ def export_project( project, proj_filename ):
         f.write( binascii.unhexlify('00') )
         f.write( binascii.unhexlify('00') )
 
-def ebs_toebs(frame_path, frame_mask_path, img2img_upscale_key_path):
-    #rename_paths = [frame_path, frame_mask_path, img2img_upscale_key_path]
-    #for path in rename_paths:
-    #    for filename in os.listdir(path):
-    #        num = filename[:-4]
-    #        num = str(int(num))
-    #        num = num.zfill(5)
-    #        new_filename = num + ".png"
-    #        os.rename(os.path.join(path, filename), os.path.join(path, new_filename))
+def main(args):
 
+    frame_path = args.frames_path
+    frame_mask_path = args.mask_path
+    img2img_upscale_key_path = args.keyframe_path
 
-    SYNTHS_PER_PROJECT = 15
+    if not (args.skip_renaming):
+        rename_paths = [frame_path, frame_mask_path, img2img_upscale_key_path]
+        for path in rename_paths:
+            for filename in os.listdir(path):
+                num = filename[:-4]
+                num = str(int(num))
+                num = num.zfill(5)
+                new_filename = num + ".png"
+                os.rename(os.path.join(path, filename), os.path.join(path, new_filename))
 
     no_upscale = False
 
@@ -245,4 +250,13 @@ def ebs_toebs(frame_path, frame_mask_path, img2img_upscale_key_path):
         proj_index += 1
         print("exported : " + proj_file_name + ".ebs" )
 
-    print("Stage 5: Renaming & Export done")
+    print("Exported EB-Synth project file")
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Convert frames, masks and keyframes to EB-Synth project file")
+    parser.add_argument('frames_path', help='Path to the video frames folder')
+    parser.add_argument('mask_path', help='Path to the video masks folder')
+    parser.add_argument('keyframe_path', help='Path to the keyframe folder')
+    parser.add_argument('--skip_renaming', action='store_true', help='Skip adding trailing zeros to frames')
+    args = parser.parse_args()
+    main(args)

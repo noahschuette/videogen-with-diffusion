@@ -1,6 +1,8 @@
 from PIL import Image
 import os
 
+#Utility functions for several workflows
+
 #create collage from images in directory
 def create_collage(dir, name, count, size):
     #DIR = "output"
