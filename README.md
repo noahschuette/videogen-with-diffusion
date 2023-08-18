@@ -6,11 +6,16 @@ Repository for my Bachelor's Thesis
 ###	EB-Synth
 
 Install EB-Synth as described in https://ebsynth.com/
+Install the following packages:
+```
+pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip install transformers pillow opencv-python numpy 
+```
 
 The application can now be dragged into the same folder to use the code from `scripts/EB-Synth` 
 
 ###	SD-Dino
-Install Conda Environment and  SD-Dino Repository as described in https://github.com/Junyi42/sd-dino:
+Install Conda Environment and SD-Dino Repository as described in https://github.com/Junyi42/sd-dino:
 ```
 conda create -n sd-dino python=3.9
 conda activate sd-dino
@@ -20,15 +25,20 @@ git clone git@github.com:Junyi42/sd-dino.git
 cd sd-dino
 pip install -e .
 ```
+For single img2img inpainting in `single_inpainting.py`, install
+```
+pip install diffusers
+pip install controlnet_aux
+```
 If torch does not work properly with CUDA, try installing it differently
 ```
 pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu118
 ``` 
-Next, move all python files from `scripts/EB-Synth` to the parent folder of the cloned repository, so that `extractor_dino.py` overwrites the existing file in the cloned subfolder. 
+Next, move all python files from `scripts/sd-dino` to the parent folder of the cloned repository, so that `extractor_dino.py` overwrites the existing file in the cloned subfolder. 
 
 ###	Stable-Diffusion Web-UI
 
-To use `video_inpainting.py`  the Web-UI version of Stable Diffusion is required. 
+To use `video_inpainting.py` it is required to install Control-Net for the Web-UI version of Stable Diffusion. 
 Install [Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) and [Control-Net for WebUI](https://github.com/Mikubill/sd-webui-controlnet)
 
 Also ensure that the `url` variable in `video_inpainting.py` matches the url in `webui.py:362`. The url should be a valid ip-adress shown in `hostname -I` . 
