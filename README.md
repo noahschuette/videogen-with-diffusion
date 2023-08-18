@@ -6,11 +6,16 @@ Repository for my Bachelor's Thesis
 ###	EB-Synth
 
 Install EB-Synth as described in https://ebsynth.com/
+Install the following packages:
+```
+pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip install transformers pillow opencv-python numpy 
+```
 
 The application can now be dragged into the same folder to use the code from `scripts/EB-Synth` 
 
 ###	SD-Dino
-Install Conda Environment and  SD-Dino Repository as described in https://github.com/Junyi42/sd-dino:
+Install Conda Environment and SD-Dino Repository as described in https://github.com/Junyi42/sd-dino:
 ```
 conda create -n sd-dino python=3.9
 conda activate sd-dino
@@ -19,6 +24,11 @@ conda install -c "nvidia/label/cuda-11.6.1" libcusolver-dev
 git clone git@github.com:Junyi42/sd-dino.git 
 cd sd-dino
 pip install -e .
+```
+For single img2img inpainting in `single_inpainting.py`, install
+```
+pip install diffusers
+pip install controlnet_aux
 ```
 If torch does not work properly with CUDA, try installing it differently
 ```
