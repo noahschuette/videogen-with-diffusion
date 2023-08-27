@@ -16,14 +16,6 @@ man_surfing.mp4 - from TAV ?
 
 ## 	Installation Notes:
 
-Most tasks are requiring these basic packages:
-```
-pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu118
-pip install transformers pillow opencv-python numpy 
-pip install diffusers
-pip install controlnet_aux
-```
-
 ###	EB-Synth
 
 Install EB-Synth as described in https://ebsynth.com/
@@ -40,6 +32,8 @@ conda install -c "nvidia/label/cuda-11.6.1" libcusolver-dev
 git clone git@github.com:Junyi42/sd-dino.git 
 cd sd-dino
 pip install -e .
+pip install diffusers
+pip install controlnet_aux
 ```
 
 If torch does not work properly with CUDA, try installing it differently
