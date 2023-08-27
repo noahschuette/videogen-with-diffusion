@@ -50,7 +50,7 @@ def main(args):
     #After that run video_inpainting.py while the webui api is running
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Optional app description")
+    parser = argparse.ArgumentParser(description="SD-Dino Pipeline")
     parser.add_argument('--skip_import', action='store_true', help='Skip video importing')
     args = parser.parse_args()
     main(args)

@@ -85,26 +85,26 @@ def crop_target(dir, count):
 #FPS = 30
 #FRAMES = 1000
 
-def remove_leading_zeros(dir):
+def remove_leading_zeros(dir, file_ext="png"):
     import glob
     import os
     import re
 
-    for filename in glob.glob(dir + '/*.png'):
-        if filename == dir + "/0.png":
+    for filename in glob.glob(f'{dir}/*.{file_ext}'):
+        if filename == f'{dir}/0.{file_ext}':
             continue
         new_filename = re.sub('(\d+)', lambda x: x.group(1).lstrip("0"), filename)
         os.rename(filename, new_filename)
     print("Removed leading zeros from " + dir + " directory")
 
 #add leading zeros to each file from directory
-def add_leading_zeros(dir):
+def add_leading_zeros(dir, file_ext="png", zfill=3):
     import glob
     import os
     import re
 
-    for filename in glob.glob(dir + '/*.png'):
-        new_filename = re.sub('(\d+)', lambda x: x.group(1).zfill(3), filename)
+    for filename in glob.glob(f'{dir}/*.{file_ext}'):
+        new_filename = re.sub('(\d+)', lambda x: x.group(1).zfill(zfill), filename)
         os.rename(filename, new_filename)
     print("Added leading zeros to " + dir + " directory")
 
