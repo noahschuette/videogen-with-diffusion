@@ -1,6 +1,6 @@
 import os
 from util import import_video, add_leading_zeros, remove_leading_zeros
-import demo_swap
+from demo_swap import demo_swap
 
 # VideoSwapper: Swap Source and Target Video with SD-Dino
 class VideoSwapper:
