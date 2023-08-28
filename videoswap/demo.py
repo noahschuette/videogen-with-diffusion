@@ -7,10 +7,10 @@ def main():
     videoswapper = VideoSwapper()
 
     # Import the video which serves as the base
-    videoswapper.import_source_video(video_path="input/man_skateboarding.mp4", source_path="data/man_skateboarding")
+    videoswapper.import_source_video(video_path="../videos/input_videos/skateboard-man.mp4", source_path="data/man_skateboarding")
 
     # Import the reference video and set the reference target
-    videoswapper.import_target_video(video_path="input/man_skiing.mp4", target_path="data/man_skiing")
+    videoswapper.import_target_video(video_path="../videos/input_videos/man_skiing.mp4", target_path="data/man_skiing")
     videoswapper.set_reference_target(frame=0)
 
     # Execute Swap between frame 0 and 20, categories define the elements which should be swapped
@@ -24,4 +24,4 @@ def main():
     export_to_ebsynth()
 
     print("Now run EBSynth.exe with the exported .ebs file")
-    print("After finishing synthesis, run: ''python export.py 'out' '' to generate video from results")
+    print('After finishing synthesis, run: " python export.py "out" " to generate video from results')
