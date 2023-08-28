@@ -176,3 +176,4 @@ def clear_folder(dir):
     for fl in glob.glob(f"/{dir}/*.png"):
         os.remove(fl)
     print("Cleaned folder " + dir)
+

@@ -3,27 +3,16 @@ from PIL import Image
 from diffusers import StableDiffusionControlNetInpaintPipeline, ControlNetModel
 from controlnet_aux import OpenposeDetector
 import os
-import numpy as np
-import cv2
 import argparse
-
-def canny_edge(img):
-    image = np.array(img)
-    image = cv2.Canny(image, 100, 200)
-    image = image[:, :, None]
-    image = np.concatenate([image, image, image], axis=2)
-    canny_image = Image.fromarray(image)
-    return canny_image
 
 #load the model for single_inpainting
 def single_optimization_model():
     device = "cuda"
-    #controlnet = ControlNetModel.from_pretrained("lllyasviel/sd-controlnet-openpose", torch_dtype=torch.float16)
-    controlnet = ControlNetModel.from_pretrained("lllyasviel/sd-controlnet-canny", torch_dtype=torch.float16)
+    controlnet = ControlNetModel.from_pretrained("lllyasviel/sd-controlnet-openpose", torch_dtype=torch.float16)
     pipe = StableDiffusionControlNetInpaintPipeline.from_pretrained("Uminosachi/dreamshaper_631Inpainting",
     controlnet=controlnet,
     torch_dtype=torch.float16).to(device)
-    generator = torch.Generator(device=device).manual_seed(5645657) #730675724 #35622375
+    generator = torch.Generator(device=device).manual_seed(5645657)
     openpose = OpenposeDetector.from_pretrained("lllyasviel/ControlNet")
     return (pipe, generator, openpose)
 
@@ -42,7 +31,6 @@ def single_optimization(source_data_path , opt_index, prompt, model):
 
     init_image = Image.open(swapped_image_path)
     control_image = openpose(Image.open(ref_image_path)) #Apply openpose
-    #control_image = canny_edge(Image.open(ref_image_path))
     control_image.save("img2img/openpose.png")
     mask_image = Image.open(mask_path)
 
@@ -57,7 +45,7 @@ def single_optimization(source_data_path , opt_index, prompt, model):
 
 def main():
 
-    source_data_path = "sd-dino/data/man_surfing"
+    source_data_path = "sd-dino/data/man_surfing" #path of the source data
     prompt = "man with yellow jacket, black pants, ski helmet"
     opt_indexes = [50] #index of the image guided through optimization (between first and last frame of sd-dino output)
 

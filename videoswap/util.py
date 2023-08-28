@@ -1,20 +1,6 @@
+# Utility Class
 import os
 
-def rename():
-    for i in range(0, 50):
-        j = 200 + i
-        os.rename(f"sd-dino/data/eagle/{str(j).zfill(3)}.png", f"sd-dino/data/eagle/{str(i).zfill(3)}.png")
-
-def crop(start, end, output_dir):
-    from PIL import Image
-    for i in range(start,end):
-        i = str(i).zfill(3)
-        if os.path.exists(f"{output_dir}/{i}.png"):
-            img = Image.open(f"{output_dir}/{i}.png")
-            img = img.resize((718,718))
-            img.save(f"{output_dir}/{i}.png")
-
-#import video from video to directory
 def import_video(video_path, output_dir = "input", clear_folder = True):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -86,7 +72,7 @@ def downscale_video(video_name):
 def resize_masks(dir):
     import cv2
     path = './masks/'
-    path_save = './masks_resized/'
+    path_save = './masks/'
 
     #makedir path_save
     if not os.path.exists(path_save):

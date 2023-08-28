@@ -1,3 +1,5 @@
+# adapted from https://github.com/Junyi42/sd-dino/blob/master/extractor_dino.py
+
 import argparse
 import torch
 import torchvision.transforms

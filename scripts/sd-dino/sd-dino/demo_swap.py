@@ -1,16 +1,4 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.7
-#   kernelspec:
-#     display_name: colossal
-#     language: python
-#     name: python3
-# ---
+# adapted from https://github.com/Junyi42/sd-dino/blob/master/demo_swap.ipynb 
 
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'

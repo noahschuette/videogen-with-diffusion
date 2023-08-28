@@ -5,6 +5,11 @@ import argparse
 
 #import the target and source video and covert it
 def import_vid(source, target, src_input_path, trg_input_path):
+    if not os.path.exists(src_input_path):
+        os.mkdir(src_input_path)
+    if not os.path.exists(trg_input_path):
+        os.mkdir(trg_input_path)
+
     import_video(source, src_input_path, True)
     import_video(target, trg_input_path, True)
     add_leading_zeros(src_input_path)
@@ -31,6 +36,7 @@ def main(args):
     extension = ".png" #extension of the source video
     start = 0 #start frame
     end = 55 #end frame
+    categories = [['person'], ['person']] # categories of the element which should be swiped (similar to a text prompt)
 
     #Step 1: Importing source and data video
     source_data_path = "sd-dino/data/man_surfing"
@@ -41,7 +47,6 @@ def main(args):
     #Step 2: Run SD-DINO: Swap, each source frame (from start to end index) with the target from reference_target index
     reference_target = str(reference_target).zfill(3)
     trg_img_path = f"{target_data_path}/{reference_target}.png"
-    categories = [['person'], ['person']] # categories of the element which should be swiped (similar to a text prompt)
     demo_swap(source_data_path, extension, trg_img_path, start, end, categories)
 
     #Step 3: Move files to other folder for later video_inpainting
@@ -50,7 +55,7 @@ def main(args):
     #After that run video_inpainting.py while the webui api is running
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="SD-Dino Pipeline")
+    parser = argparse.ArgumentParser(description="SD-Dino Pipeline.")
     parser.add_argument('--skip_import', action='store_true', help='Skip video importing')
     args = parser.parse_args()
     main(args)
