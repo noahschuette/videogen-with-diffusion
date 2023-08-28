@@ -53,3 +53,7 @@ To start the environment without the UI, use
 `python launch.py --nowebui --cors-allow-origins=http://192.168.0.1:7861` 
 where you also replace the IP-adress. 
 The API is now ready to listen to calls from `video_inpainting.py` 
+
+## Running Application:
+
+Run `demo.py` in `videoswap` to demonstrate SD-Dino with EB-Synth.
