@@ -14,6 +14,9 @@ skateboard-man.mp4 - from TAV ?
 snowboarder.mp4 - DAVIS dataset ?  
 man_surfing.mp4 - from TAV ?  
 
+- check file links in file
+- add missing scripts
+
 ## 	Installation Notes:
 
 ###	EB-Synth
