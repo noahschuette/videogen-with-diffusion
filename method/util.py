@@ -18,7 +18,7 @@ def import_video(video_path, output_dir = "input", clear_folder = True):
     while success:
         cv2.imwrite(os.path.join(output_dir,"%d.png" % count), image)
         success,image = vidcap.read()
-        print('Read a new frame: ', success)
+        #print('Read a new frame: ', success)
         count += 1
     print("Imported video to " + output_dir + " directory")
 
@@ -35,13 +35,13 @@ def remove_leading_zeros(dir):
     print("Removed leading zeros from " + dir + " directory")
 
 #add leading zeros to each file from directory
-def add_leading_zeros(dir):
+def add_leading_zeros(dir, leading_zeros=5):
     import glob
     import os
     import re
 
     for filename in glob.glob(dir + '/*.png'):
-        new_filename = re.sub('(\d+)', lambda x: x.group(1).zfill(3), filename)
+        new_filename = re.sub('(\d+)', lambda x: x.group(1).zfill(leading_zeros), filename)
         os.rename(filename, new_filename)
     print("Added leading zeros to " + dir + " directory")
 
@@ -71,17 +71,22 @@ def downscale_video(video_name):
 #resize masks
 def resize_masks(dir):
     import cv2
-    path = './masks/'
-    path_save = './masks/'
+    print("Resizing masks")
 
-    #makedir path_save
-    if not os.path.exists(path_save):
-        os.makedirs(path_save)
-
-    files = os.listdir(path)
+    files = os.listdir(dir)
     c = 0
     for file in files:
-        img = cv2.imread(path + file, cv2.IMREAD_GRAYSCALE)
+        img = cv2.imread(dir + "/" + file, cv2.IMREAD_GRAYSCALE)
         img = cv2.resize(img, (512, 512), interpolation=cv2.INTER_AREA)
         c += 1
-        cv2.imwrite(path_save + str(c).zfill(3) + ".png", img)
+        cv2.imwrite(dir + "/" + file, img)
+
+#crop images
+def crop_images(dir):
+    import cv2
+    for i in range(16):
+        path = f"{dir}/{str(i).zfill(5)}.png"
+        img = cv2.imread(path)
+        #img = img[112:400, 0:512]
+        img = cv2.resize(img, (512,512))
+        cv2.imwrite(path, img)

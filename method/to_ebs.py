@@ -168,23 +168,23 @@ def export_project( project, proj_filename ):
         f.write( binascii.unhexlify('00') )
         f.write( binascii.unhexlify('00') )
 
-def main(args):
+def main(dir):
 
-    frame_path = "input"
-    frame_mask_path = "masks"
-    img2img_upscale_key_path = "img2img"
-    if not os.path.exsits("out"):
+    frame_path = f"{dir}/video"
+    frame_mask_path = f"{dir}/masks"
+    resize_masks(frame_mask_path)
+    img2img_upscale_key_path = f"{dir}/img2img"
+    if not os.path.exists("out"):
         os.mkdir("out")
 
-    if not (args.skip_renaming):
-        rename_paths = [frame_path, frame_mask_path, img2img_upscale_key_path]
-        for path in rename_paths:
-            for filename in os.listdir(path):
-                num = filename[:-4]
-                num = str(int(num))
-                num = num.zfill(5)
-                new_filename = num + ".png"
-                os.rename(os.path.join(path, filename), os.path.join(path, new_filename))
+    rename_paths = [frame_path, frame_mask_path, img2img_upscale_key_path]
+    for path in rename_paths:
+        for filename in os.listdir(path):
+            num = filename[:-4]
+            num = str(int(num))
+            num = num.zfill(5)
+            new_filename = num + ".png"
+            os.rename(os.path.join(path, filename), os.path.join(path, new_filename))
 
     no_upscale = False
 
@@ -232,6 +232,8 @@ def main(args):
         "adv_detail" : 1,   # high
         "adv_gpu" : 1,      # use gpu
     }
+
+    project["proj_dir"] = dir
 
     proj_base_name = time.strftime("%Y%m%d-%H%M%S")
 
