@@ -1,3 +1,5 @@
+# Uses the SD-Dino backbone on entire videos
+
 import os
 from util import import_video, add_leading_zeros, remove_leading_zeros
 from demo_swap import demo_swap

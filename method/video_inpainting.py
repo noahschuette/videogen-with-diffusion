@@ -1,7 +1,5 @@
 # https://github.com/facebookresearch/segment-anything/blob/main/notebooks/predictor_example.ipynb
 import os
-
-# import matplotlib.pyplot as plt
 import torch
 import cv2
 import numpy as np

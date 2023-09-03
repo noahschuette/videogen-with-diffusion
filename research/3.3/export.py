@@ -1,4 +1,4 @@
-#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage7.py (last visited 18.10.2023)
+#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage7.py
 import os
 import re
 import glob

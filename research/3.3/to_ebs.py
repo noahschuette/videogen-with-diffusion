@@ -1,4 +1,5 @@
 #adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage5.py
+#Create EB-Synth project files from frames, masks and keyframes
 
 import os
 import re

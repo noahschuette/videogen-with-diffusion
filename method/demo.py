@@ -1,3 +1,5 @@
+# Demonstration of SD-Dino on videos
+
 from video_swapper import VideoSwapper
 from inpainting import SingleInpainting
 from to_ebs import main as export_to_ebsynth
@@ -20,8 +22,7 @@ def main():
     inpainting = SingleInpainting(source_path="data/man_skateboarding", seed=5645657, openpose_strenght=0.5)
     inpainting.optimize_frame(frame=0, prompt="man with yellow jacket, black pants, ski helmet")
 
-    # Export to EB-Synth to generate .ebs project file
+    # Optional: Export to EB-Synth to generate .ebs project file, or use video_inpainting.py
     export_to_ebsynth()
-
     print("Now run EBSynth.exe with the exported .ebs file")
     print('After finishing synthesis, run: " python export.py "out" " to generate video from results')

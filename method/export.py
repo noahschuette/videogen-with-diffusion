@@ -1,4 +1,6 @@
-#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage7.py (last visited 18.10.2023)
+#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage7.py 
+#Helper script to generate videos from multiple EB-Synth synthesis results
+
 import os
 import re
 import glob

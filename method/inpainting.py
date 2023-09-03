@@ -1,10 +1,11 @@
+# Perform single inpainting with Control-Net
+
 import torch
 from PIL import Image
 from diffusers import StableDiffusionControlNetInpaintPipeline, ControlNetModel
 from controlnet_aux import OpenposeDetector
 import os
 
-# Single Inpainting
 class SingleInpainting:
     def __init__(self, source_path, seed, openpose_strenght=0.5):
         self.openpose_strenght = openpose_strenght

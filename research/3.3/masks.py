@@ -1,4 +1,6 @@
-#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage1.py (last visited 18.10.2023)
+#adapted from https://github.com/s9roll7/ebsynth_utility/blob/main/stage1.py 
+#Extract masks from frames
+
 import cv2
 import numpy as np
 import os
