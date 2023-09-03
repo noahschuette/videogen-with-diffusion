@@ -1,0 +1,39 @@
+Video: bear.mp4
+SD-Dino Reference Target: polarbear.jpg
+Prompt: "Polar Bear is walking"
+
+Video: dog.mp4
+SD-Dino Reference Target: black_dog.jpg
+Prompt: "Black Dog"
+
+Video: rollerblade.mp4
+SD-Dino Reference Target: Frame 0 of man_skiing.mp4
+Prompt: "Snowbarder with yellow jacket is inline skating"
+
+Video: rollerblade.mp4
+SD-Dino Reference Target: Frame 0 of hike.mp4
+Prompt: "Hiker is inline skating"
+
+Video: car.mp4
+SD-Dino Reference Target: Frame 0 of car_roundabout.mp4
+Prompt: "Black car"
+
+Video: car_roundabout.mp4
+SD-Dino Reference Target: Frame 0 of car.mp4
+Prompt: "White car"
+
+Video: hike.mp4
+SD-Dino Reference Target: Frame 0 of man_skiing.mp4
+Prompt: "Snowbarder with yellow jacket is hiking"
+
+Video: hike.mp4
+SD-Dino Reference Target: Frame 0 of tennis.mp4
+Prompt: "Tennis player is hiking"
+
+Video: tennis.mp4
+SD-Dino Reference Target: Frame 0 of hike.mp4
+Prompt: "Hiker is playing tennis"
+
+Video: tennis.mp4
+SD-Dino Reference Target: Frame 0 of man_skiing.mp4
+Prompt: "Snowboarder with yellow jacket is playing tennis"
