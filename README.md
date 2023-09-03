@@ -10,23 +10,14 @@ bus_yellow.mp4 - https://www.youtube.com/watch?v=R1JuCkqx3d8&t=74s
 bus_red.mp4 - https://www.youtube.com/watch?v=CFlBtMD2Qis&t=143s  
 eagle.mp4 - https://www.youtube.com/watch?v=i94QoqvmgrM  
 plane.mp4 - https://www.youtube.com/watch?v=xk4LFFm1zAA  
-skateboard-man.mp4 - from TAV ?  
-snowboarder.mp4 - DAVIS dataset ?  
-man_surfing.mp4 - from TAV ?  
-
-- check file links in file
-- add missing scripts
+man_skiing.mp4 - https://github.com/showlab/Tune-A-Video/blob/main/data/man-skiing.mp4
+man-surfing.mp4 - https://github.com/showlab/Tune-A-Video/blob/main/data/man-surfing.mp4
+skateboard-man.mp4 - https://github.com/baaivision/vid2vid-zero/blob/main/data/skateboard-man.mp4
 
 ## 	Installation Notes:
 
-###	EB-Synth
-
-Install EB-Synth as described in https://ebsynth.com/
-
-The application can now be dragged into the same folder to use the code from `scripts/EB-Synth` 
-
 ###	SD-Dino
-Install Conda Environment and SD-Dino Repository as described in https://github.com/Junyi42/sd-dino:
+Create a conda environment and clone the SD-Dino repository as described in https://github.com/Junyi42/sd-dino:
 ```
 conda create -n sd-dino python=3.9
 conda activate sd-dino
@@ -40,10 +31,30 @@ pip install controlnet_aux
 ```
 
 If torch does not work properly with CUDA, try installing it differently
+Optional: Install XFormers for better performance
 ```
 pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip install --force-reinstall --no-deps --pre xformers
 ``` 
-Next, move all python files from `scripts/sd-dino` to the parent folder of the cloned repository, so that `extractor_dino.py` overwrites the existing file in the cloned subfolder. 
+Next, move all python files from `method/sd-dino` to the parent folder of the cloned repository, so that `extractor_dino.py` overwrites the existing file in the cloned subfolder. 
+```
+method/
+├─ demo.py
+├─ video_swapper.py
+├─ ...
+├─ sd-dino/
+│  ├─ assets/
+│  ├─ data/
+│  ├─ ...
+│  ├─ extractor_dino.py
+│  ├─ demo_swap.py
+│  ├─ ...
+```
+
+###	EB-Synth
+
+Install EB-Synth as described in https://ebsynth.com/
+The application can now be dragged into the `method\` directory in order to use `.ebs` files with the application
 
 ###	Stable-Diffusion Web-UI
 
