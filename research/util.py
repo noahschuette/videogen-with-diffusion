@@ -57,7 +57,7 @@ def export_video(dir, frames, start_frame=0, video_name = "video", fps = 30, dow
                         " -start_number " + str(start_frame) +
                         " -i " + path +
                         " -vframes " + str(frames) +
-                        " -vcodec openh264 -pix_fmt yuv420p " +
+                        " -vcodec libx264 -pix_fmt yuv420p " +
                         out, shell=True)
     print("Created movie " + video_name + ".mp4" + " in " + dir + " directory")
     if (downscale):
