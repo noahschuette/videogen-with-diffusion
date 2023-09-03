@@ -1,3 +1,5 @@
+# helper script to load dataset, adapted from https://github.com/lllyasviel/ControlNet/blob/main/tutorial_dataset.py
+
 import json
 import cv2
 import numpy as np
