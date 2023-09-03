@@ -1,3 +1,5 @@
+# Train Control-Net, adapted from https://github.com/lllyasviel/ControlNet/blob/main/tutorial_train.py
+
 from share import *
 
 import pytorch_lightning as pl

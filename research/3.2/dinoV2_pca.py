@@ -17,14 +17,13 @@ transform = T.Compose([
     ])
 
 #Get DINOv2 features from forward step
-#type = "x_norm_patchtokens", "x_norm_clstoken", "x_prenorm" or "masks"
 #src: https://github.com/facebookresearch/dinov2/blob/main/dinov2/models/vision_transformer.py line 221 ff.
 def get_token(img):
     with torch.no_grad():
         features = dinov2_vits14.forward_features(img.cuda())["x_norm_patchtokens"]
     return features
 
-# visualize first PCA components as seen in https://github.com/facebookresearch/dinov2/issues/6
+# visualize first PCA components, adapted from https://github.com/facebookresearch/dinov2/issues/6
 def visualize_pca(features, frames):
     pca = PCA(n_components=3)
     features = features.cpu()[0]
