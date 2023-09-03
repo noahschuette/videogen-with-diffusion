@@ -1,19 +1,6 @@
 # Video Generation with Diffusion Models
 Repository for my Bachelor's Thesis
 
-## Video Sources:
-
-For research we used clips of the following videos:  
-balloon.mp4 - https://www.youtube.com/watch?v=mW3mxzCNwCo  
-airballoon.mp4 - https://www.youtube.com/watch?v=t-C8WcMqXb4  
-bus_yellow.mp4 - https://www.youtube.com/watch?v=R1JuCkqx3d8&t=74s  
-bus_red.mp4 - https://www.youtube.com/watch?v=CFlBtMD2Qis&t=143s  
-eagle.mp4 - https://www.youtube.com/watch?v=i94QoqvmgrM  
-plane.mp4 - https://www.youtube.com/watch?v=xk4LFFm1zAA  
-man_skiing.mp4 - https://github.com/showlab/Tune-A-Video/blob/main/data/man-skiing.mp4
-man-surfing.mp4 - https://github.com/showlab/Tune-A-Video/blob/main/data/man-surfing.mp4
-skateboard-man.mp4 - https://github.com/baaivision/vid2vid-zero/blob/main/data/skateboard-man.mp4
-
 ## 	Installation Notes:
 
 ###	SD-Dino
@@ -71,3 +58,19 @@ The API is now ready to listen to calls from `video_inpainting.py`
 ## Running Application:
 
 Run `demo.py` in `videoswap` to demonstrate SD-Dino with EB-Synth.
+
+## Sources:
+
+The model for research 3.2 is available at [Huggingface](https://huggingface.co/nschuette/dinov2-controlnet)
+
+For research we used clips of the following videos:  
+[balloon.mp4](https://www.youtube.com/watch?v=mW3mxzCNwCo)
+[airballoon.mp4](https://www.youtube.com/watch?v=t-C8WcMqXb4)
+[bus_yellow.mp4](https://www.youtube.com/watch?v=R1JuCkqx3d8&t=74s)
+[bus_red.mp4](https://www.youtube.com/watch?v=CFlBtMD2Qis&t=143s)
+[eagle.mp4](https://www.youtube.com/watch?v=i94QoqvmgrM)
+[plane.mp4](https://www.youtube.com/watch?v=xk4LFFm1zAA)
+[man_skiing.mp4](https://github.com/showlab/Tune-A-Video/blob/main/data/man-skiing.mp4)
+[man-surfing.mp4](https://github.com/showlab/Tune-A-Video/blob/main/data/man-surfing.mp4)
+[skateboard-man.mp4](https://github.com/baaivision/vid2vid-zero/blob/main/data/skateboard-man.mp4)
+
